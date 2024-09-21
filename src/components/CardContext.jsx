@@ -69,9 +69,14 @@ export const CardProvider = ({ children }) => {
     setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   };
 
+  const editCard = (updatedCard) => {
+    setCards((prevCards) =>
+      prevCards.map((card) => (card.id === updatedCard.id ? updatedCard : card))
+    );
 
+  } 
   return (
-    <CardContext.Provider value={{ cards, addCard, removeCard }}>
+    <CardContext.Provider value={{ cards, addCard, removeCard,editCard}}>
       {children}
     </CardContext.Provider>
   );
